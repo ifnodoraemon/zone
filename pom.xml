@@ -20,16 +20,15 @@
     </properties>
     <repositories>
         <repository>
-            <id>central</id>
-            <name>Nexus aliyun</name>
-            <layout>default</layout>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <id>alimaven</id>
+            <name>Maven Aliyun Mirror</name>
+            <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -149,6 +148,13 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.5.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

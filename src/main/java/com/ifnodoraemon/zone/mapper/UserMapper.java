@@ -4,11 +4,13 @@ import com.ifnodoraemon.zone.model.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 /**
  * @author ifnodoraemon
  */
 @Mapper
+@Component(value = "userMapper")
 public interface UserMapper {
 
     @Select(
