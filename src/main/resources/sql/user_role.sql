@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE IF NOT EXISTS `user_role`
 (
-    `user_id`       BIGINT UNSIGNED NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `role_id` BIGINT UNSIGNED NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
