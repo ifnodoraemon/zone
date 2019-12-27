@@ -1,15 +1,49 @@
 package com.ifnodoraemon.zone.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * @author ifnodoraemon
  */
-public class UserDO {
+public class UserDO implements UserDetails, Serializable{
     private Long id;
     private String username;
     private String password;
     private String email;
+
+    private List<RoleDO> authorities;
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
 
     public long getId() {
         return id;
@@ -41,6 +75,10 @@ public class UserDO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setAuthorities(List<RoleDO> authorities) {
+        this.authorities = authorities;
     }
 
     @Override
