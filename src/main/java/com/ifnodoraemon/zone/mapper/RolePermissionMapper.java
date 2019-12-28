@@ -17,8 +17,8 @@ import java.util.List;
 public interface RolePermissionMapper {
     @Select({
             "SELECT role.name as role_name , permission.url as url FROM " +
-                    "role JOIN role_permission ON role.id = role_permission.role_id" +
-                    "JOIN permission ON role_permission.permission_id = permission.id"
+                    " role JOIN role_permission ON role.id = role_permission.role_id " +
+                    " JOIN permission ON role_permission.permission_id = permission.id "
     })
     @Results({
             @Result(property = "roleName", column = "role_name"),
