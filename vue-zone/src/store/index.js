@@ -26,6 +26,9 @@ export default new Vuex.Store({
         carousels: [
             {
                 color: 'primary'
+            },
+            {
+                color: "secondary"
             }
         ]
     },

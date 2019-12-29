@@ -1,28 +1,30 @@
 <template>
-    <v-carousel
-            :show-arrows="true"
-            :cycle="true"
-    >
-        <v-carousel-item
-                v-for="(item, i) in carousels"
-                :key="i"
+    <v-container>
+        <v-carousel
+                :show-arrows="true"
+                :cycle="true"
         >
-            <v-sheet
-                    :color="item.color"
-                    height="100%"
-                    tile
+            <v-carousel-item
+                    v-for="(item, i) in carousels"
+                    :key="i"
             >
-                <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
+                <v-sheet
+                        :color="item.color"
+                        height="100%"
+                        tile
                 >
-                    <div class="display-3">Slide {{ i + 1 }}</div>
-                </v-row>
-            </v-sheet>
+                    <v-row
+                            class="fill-height"
+                            align="center"
+                            justify="center"
+                    >
+                        <div class="display-3">Slide {{ i + 1 }}</div>
+                    </v-row>
+                </v-sheet>
 
-        </v-carousel-item>
-    </v-carousel>
+            </v-carousel-item>
+        </v-carousel>
+    </v-container>
 </template>
 
 <script>

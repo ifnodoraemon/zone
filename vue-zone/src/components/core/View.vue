@@ -1,10 +1,15 @@
 <template>
-<v-app></v-app>
+    <subscribe></subscribe>
 </template>
 
 <script>
+    import Subscribe from "./Subscribe";
+
     export default {
-        name: "View"
+        name: "View",
+        components: {
+            Subscribe
+        }
     }
 </script>
 

@@ -1,15 +1,15 @@
 <template>
     <v-btn
+            class="mr-0"
             fab
             fixed
             bottom
             right
+            title="Go To Top"
             color="secondary"
-            href="https://github.com/vuetifyjs/theme-blog"
-            target="_blank"
-            rel="noopener"
+            @click="$vuetify.goTo(0)"
     >
-
+        <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
 </template>
 

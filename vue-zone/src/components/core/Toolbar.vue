@@ -72,7 +72,7 @@
 
                 if (item.to || !item.href) return;
 
-                this.$vuetify.goTo(item.href)
+                this.$router.go(0)
             }
         }
     }
