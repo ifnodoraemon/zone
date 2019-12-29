@@ -2,9 +2,9 @@
     <v-app>
         <core-toolbar></core-toolbar>
 
-        <core-drawer></core-drawer>
+        <core-carousel></core-carousel>
 
-        <core-view></core-view>
+        <core-content></core-content>
 
         <core-footer></core-footer>
 
@@ -14,20 +14,20 @@
 
 <script>
     import CoreCta from './components/core/Cta';
-    import CoreDrawer from './components/core/Drawer';
+    import CoreCarousel from './components/core/Carousel';
     import CoreFooter from './components/core/Footer';
     import CoreToolbar from './components/core/Toolbar';
-    import CoreView from './components/core/View';
+    import CoreContent from './components/core/Content';
 
     export default {
         name: 'App',
 
         components: {
             CoreCta,
-            CoreDrawer,
+            CoreCarousel,
             CoreFooter,
             CoreToolbar,
-            CoreView
+            CoreContent
         },
 
         data: () => ({
