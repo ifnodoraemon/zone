@@ -1,8 +1,9 @@
 <template>
-    <v-app-bar>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar
+            dark
+    >
         <v-toolbar-title
-            class="ma-5"
+                class="ma-5"
         >
             如果大雄没有机器猫
         </v-toolbar-title>
@@ -12,18 +13,39 @@
                 :to="link.to"
                 text
         >
-<!--            <v-icon :if="link.icon"></v-icon>-->
+            <!--            <v-icon :if="link.icon"></v-icon>-->
             {{link.text}}
         </v-btn>
         <v-spacer></v-spacer>
         <v-text-field
-            append-icon="mdi-magnify"
-            flat
-            hide-details
-            solo-inverted
-            style="max-width: 300px"
+                append-icon="mdi-magnify"
+                flat
+                hide-details
+                solo-inverted
+                style="max-width: 300px"
         >
         </v-text-field>
+        <v-spacer></v-spacer>
+        <div v-if="!isLogin">
+            <v-btn
+                    text
+                    to="/login"
+            >
+                登录
+            </v-btn>
+            <v-btn
+                    text
+                    to="/register"
+            >
+                注册
+            </v-btn>
+        </div>
+        <div v-else>
+            <v-avatar>
+                <v-icon dark>mdi-account-circle</v-icon>
+            </v-avatar>
+        </div>
+
     </v-app-bar>
 </template>
 
@@ -38,7 +60,8 @@
 
         computed: {
             ...mapGetters({
-                links: 'links'
+                links: 'links',
+                isLogin: 'isLogin'
             })
         },
 
