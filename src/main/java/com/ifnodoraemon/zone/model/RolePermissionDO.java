@@ -2,9 +2,12 @@ package com.ifnodoraemon.zone.model;
 
 import java.util.Objects;
 
+/**
+ * @author ifnodoraemon
+ */
 public class RolePermissionDO {
-    private String url;
     private String roleName;
+    private String url;
 
     public String getUrl() {
         return url;
@@ -24,8 +27,14 @@ public class RolePermissionDO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         RolePermissionDO that = (RolePermissionDO) o;
         return Objects.equals(url, that.url) &&
                 Objects.equals(roleName, that.roleName);
@@ -39,8 +48,8 @@ public class RolePermissionDO {
     @Override
     public String toString() {
         return "RolePermissionDO{" +
-                "url='" + url + '\'' +
-                ", roleName='" + roleName + '\'' +
+                "roleName='" + roleName + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
