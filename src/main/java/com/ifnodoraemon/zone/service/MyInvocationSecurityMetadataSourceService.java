@@ -1,14 +1,15 @@
 package com.ifnodoraemon.zone.service;
 
-import com.ifnodoraemon.zone.model.RolePermission;
 import com.ifnodoraemon.zone.model.RolePermissionDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class MyInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
     private PermissionService permissionService;
@@ -30,16 +31,25 @@ public class MyInvocationSecurityMetadataSourceService implements FilterInvocati
         if ( null == map ){
             loadResourceDefine();
         }
+
+        HttpServletRequest request = ((FilterInvocation) o).getHttpRequest();
+        for (String url : map.keySet()) {
+            if (new AntPathRequestMatcher(url).matches(request)) {
+                return map.get(url);
+            }
+        }
+
+        return Collections.emptyList();
     }
 
     @Override
     public Collection<ConfigAttribute> getAllConfigAttributes() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return false;
+        return true;
     }
 
     private void loadResourceDefine() {
@@ -47,7 +57,17 @@ public class MyInvocationSecurityMetadataSourceService implements FilterInvocati
         List<RolePermissionDO> rolePermissions = rolePermissionService.listAllRolePermissions();
 
         for (RolePermissionDO rolePermissionDO : rolePermissions){
-            String url = rolePermissionDO
+            String url = rolePermissionDO.getUrl();
+            String roleName = rolePermissionDO.getRoleName();
+            ConfigAttribute role = new SecurityConfig(roleName);
+
+            if (map.containsKey(url)){
+                map.get(url).add(role);
+            }else {
+                List<ConfigAttribute> list = new ArrayList<>();
+                list.add(role);
+                map.put(url, list);
+            }
         }
     }
 }

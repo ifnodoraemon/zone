@@ -19,6 +19,6 @@ public class RolePermissionServiceImpl implements RolePermissionService {
 
     @Override
     public List<RolePermissionDO> listAllRolePermissions() {
-        return null;
+        return rolePermissionMapper.listAllRolePermissions();
     }
 }
